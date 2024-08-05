@@ -1,0 +1,796 @@
+/*NavBar */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 10rem;
+}
+
+
+header {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 1px;
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, .1);
+    padding: 0 100px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.loader {
+    left: 11%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+
+.loader h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.8vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .1);
+    background-image: url(water-fish1.png);
+    background-repeat: repeat-x;
+    background-clip: text;
+    animation: animate 10s linear infinite;
+    height: 2vh;
+
+
+}
+
+@keyframes animate {
+    0% {
+        background-position: left 10px top 100px;
+
+    }
+
+    40% {
+        background-position: left 800px top 40px;
+
+    }
+
+    80% {
+        background-position: left 900px top -80px;
+
+    }
+
+    100% {
+        background-position: left 1200px top 40px;
+
+    }
+}
+
+
+.logop {
+    width: 3.5vw;
+    position: fixed;
+    left: 5%;
+    top: 1%;
+
+}
+
+.navbar {
+    margin-right: 10px;
+
+}
+
+.navbar ul {
+    display: flex;
+}
+
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0px 10px;
+    list-style: none;
+}
+
+.navbar ul li a {
+    color: white;
+    margin: 0 0.1rem;
+    padding: 0.1rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+.navbar ul li a:hover {
+    color: aquamarine;
+}
+
+
+
+
+
+
+.login-btn {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 14px 30px;
+    background-image: linear-gradient(45deg, #465d88, #3a3c52);
+    border-radius: 2rem;
+    font-size: 1.5vw;
+    border-top-right-radius: 0;
+    transition: 0.5s;
+    margin-left: 20px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 30px;
+    color: white;
+    font-weight: 600;
+    background-image: linear-gradient(45deg, #465d88, #3a3c52);
+    border-radius: 2rem;
+    font-size: 1.5vw;
+    border-top-right-radius: 0;
+    margin-right: 20px;
+    transition: 0.5s;
+
+}
+
+.closeBtn,
+.menuBtn {
+    font-size: 28px;
+    margin: 0px 20px;
+    color: white;
+    display: none;
+}
+
+/* media queary for nav fa-bars*/
+
+@media only screen and (max-width:1024px) {
+
+    .navbar ul {
+        display: none;
+    }
+
+    .navbar ul li {
+        display: block;
+        margin: 20px;
+        background: rgba(82, 132, 145, 0.8);
+    }
+
+    .menuBtn {
+        display: block;
+
+    }
+
+    .navbar ul li a {
+        color: white;
+        /* Text color for menu items */
+        text-decoration: none;
+        /* Remove underline */
+    }
+
+    .navbar ul li a:hover {
+        color: aquamarine;
+    }
+
+    #menu {
+        z-index: 4;
+        width: 100%;
+        background: rgba(75, 80, 83, 0.8);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        text-align: center;
+
+    }
+
+    .header {
+        height: 30px;
+    }
+
+    .menuBtn {
+        padding-left: 200px;
+    }
+
+    .loader {
+        left: 11%;
+        top: 6%;
+
+    }
+
+    /*body.menu-open .pride {
+        display: none;
+    }
+
+    body.menu-open .feed-card {
+        display: none;
+    }*/
+
+
+}
+
+
+
+
+section {
+    height: 100vh;
+}
+
+
+
+
+.pride {
+    width: 80%;
+    height: 100vh;
+    margin-top: 10%;
+    padding: 20px;
+    padding-left: 50px;
+}
+
+.pride h1 {
+    font-size: 3vw;
+    color: rgb(247, 244, 244);
+    padding-right: 20px;
+
+}
+
+.pride p {
+    margin: 10px 0 30px;
+    color: rgb(236, 230, 230);
+    animation-delay: 0.5s;
+    font-size: 1.5vw;
+}
+
+.pride .btn {
+    padding: 15px 80px;
+    font-size: 1.8vw;
+    animation-delay: 1s;
+}
+
+.btn:hover {
+    border-top-right-radius: 2rem;
+}
+
+.login-btn:hover {
+    border-top-right-radius: 2rem;
+}
+
+
+
+.anim {
+    opacity: 0;
+    transform: translatey(30px);
+    animation: moveup 0.5s linear forwards;
+}
+
+@keyframes moveup {
+    100% {
+        opacity: 1;
+        transform: translatey(0px);
+    }
+}
+
+.fish-img {
+    width: 35vw;
+    right: 15%;
+    position: absolute;
+    top: 35%;
+    width: 8vw;
+
+}
+
+
+.filter {
+    margin-top: 8%;
+    max-width: 40vw;
+    margin-left: 10%;
+
+}
+
+.filter h1 {
+    font-size: 3vw;
+    color: rgb(247, 244, 244);
+
+}
+
+.filter p {
+    margin: 10px 0 30px;
+    color: rgb(236, 230, 230);
+    animation-delay: 0.5s;
+}
+
+
+
+/*navbar  end*/
+
+/* Fish Monitering */
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+
+}
+
+.title {
+    font-size: 25px;
+    color: #f0ecf1;
+    position: relative;
+    font-weight: 900;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.title::before {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 500px;
+    padding: 2px;
+    background: #3d0bc7;
+    border-radius: 5px;
+
+}
+
+.user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+.user-details .input-box .details {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.user-details .input-box .dropdown {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+
+}
+
+.details {
+    font-weight: 900;
+}
+
+.input-box input {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-color: #9b59b6;
+
+
+}
+
+.dropdown {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+}
+
+.details {
+    font-size: 20px;
+    font-weight: 900;
+
+}
+
+.buttonStyle {
+    margin: 25px 0;
+
+}
+
+#saveBtn {
+    cursor: pointer;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    width: 200px;
+    height: 45px;
+    font-size: 1.8vw;
+    color: white;
+    font-weight: 600;
+
+
+}
+
+#saveBtn:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+
+}
+
+#backBtn {
+    cursor: pointer;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    width: 200px;
+    height: 45px;
+    font-size: 1.8vw;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#backBtn:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+@media (max-width: 1024px) {
+    .buttonStyle {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    #saveBtn {
+        width: 100px;
+        height: 25px;
+    }
+
+    #backBtn {
+        width: 100px;
+        height: 25px;
+    }
+}
+
+.delete-btn {
+    color: white;
+}
+
+.edit-btn {
+    color: white;
+}
+
+button {
+
+    cursor: pointer;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    border-radius: 5px;
+
+
+}
+
+button:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+
+}
+
+
+
+
+
+/* Styles for the daily data and PDF buttons */
+.dailydata {
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
+}
+
+.daily_data,
+.pdf-btn {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 14px 25px;
+    background-image: linear-gradient(45deg, #465d88, #3a3c52);
+    border-radius: 2rem;
+    font-size: 1.5vw;
+    border-top-right-radius: 0;
+    transition: 0.5s;
+}
+
+.daily_data:hover,
+.pdf-btn:hover {
+    border-top-right-radius: 2rem;
+}
+
+.bottom-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.searchform {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.searchbydate {
+    padding: 10px;
+    font-size: 1.5vw;
+    border-radius: 10px;
+}
+
+.searchsubmit {
+    padding: 10px;
+    font-size: 1.5vw;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.searchsubmit:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+
+@media (max-width: 750px) {
+
+    .pdf-btn,
+    .daily_data {
+        font-size: 3vw;
+        padding: 10px 15px;
+    }
+
+    .searchbydate,
+    .searchsubmit {
+        font-size: 3vw;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    .info-text {
+        bottom: 10px;
+    }
+
+}
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .title {
+        margin-top: 0px;
+    }
+
+    .input-box {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .user-details {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+    .user-details::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .title::before {
+        width: 150px;
+    }
+
+
+    button:hover {
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+
+    }
+
+    #saveBtn:hover {
+        background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+
+    }
+
+
+
+
+}
+
+
+/* Fish Monitering */
+
+
+/*datalist saveddata*/
+
+.savetitle {
+    color: #f0ecf1;
+    font-size: 2vw;
+    font-weight: 500;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+td {
+    font-size: 1.2vw;
+}
+
+.savecontainer {
+    max-width: 100%;
+    width: 100%;
+    background: #643a79;
+    padding: 5px 10px;
+    border-radius: 5px;
+    height: 450px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    color: #ccc;
+
+}
+
+.user-details1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+
+.sticky th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #f2f2f2;
+    font-size: 1.5vw;
+
+}
+
+/* Add to your style1.css */
+
+
+
+/* Define styles for the table */
+table {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+    border-radius: 10px;
+    display: flexbox;
+}
+
+/* Define styles for table headers */
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    border: 1px solid #ddd;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Define styles for table cells */
+td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 1.2vw;
+    height: auto;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    overflow: hidden;
+    /* Hide overflowing content */
+
+}
+
+
+
+
+
+
+/* Responsive Table */
+@media (max-width: 1024px) {
+    .savecontainer {
+        height: auto;
+    }
+
+    table {
+        font-size: 1.1vw;
+        /* Adjust font size for smaller screens */
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+
+    .savetitle {
+        margin-top: 2%;
+    }
+}
+
+@media (max-width: 773px) {
+    .savecontainer {
+        height: auto;
+        width: auto;
+    }
+
+    table {
+        font-size: 0.9vw;
+        /* Adjust font size for smaller screens */
+    }
+
+    th,
+    td {
+        padding: 6px;
+    }
+
+    .savetitle {
+        margin-top: 2%;
+    }
+
+
+    .searchbydate,
+    .searchsubmit,
+    .pdf-btn,
+    .daily_data {
+        font-size: 1vw;
+    }
+
+    .searchform,
+    .buttons {
+        flex-direction: row;
+        align-items: center;
+    }
+}

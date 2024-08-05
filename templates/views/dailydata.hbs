@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Monitor fish tank conditions with our easy-to-use form. Input parameters such as pH, temperature, and dissolved oxygen to keep track of your fish tank's health. Save your data and keep your aquatic environment in optimal condition.">
+    <link rel="stylesheet" href="style1.css">
+    <title>Fish Monitoring</title>
+    {{>navbar}}
+
+</head>
+
+<body background="Untitled-4 copy.jpg">
+
+
+
+    <div>
+        <div class="title">
+            <h2>Fish Monitoring</h2>
+        </div>
+        <form id="fishTankForm" class="container" action="/dailydata" method="POST">
+            <div class="user-details">
+
+                <span class="details" for="tank">Select Tank:</span>
+                <div class="input-box">
+                    <select class="dropdown" id="tank" name="tank">
+                        <option value="0" name="tank">Fish Tank 0</option>
+                        <option value="1" name="tank">Fish Tank 1</option>
+                        <option value="2" name="tank">Fish Tank 2</option>
+                        <option value="3" name="tank">Fish Tank 3</option>
+                        <option value="4" name="tank">Fish Tank 4</option>
+                        <option value="5" name="tank">Fish Tank 5</option>
+                        <option value="6" name="tank">Fish Tank 6</option>
+                        <option value="7" name="tank">Fish Tank 7</option>
+                        <option value="8" name="tank">Fish Tank 8</option>
+                        <option value="9" name="tank">Fish Tank 9</option>
+                        <option value="10" name="tank">Fish Tank 10</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="details" for="date">Date:</span>
+                    <input type="date" id="date" name="date">
+                </div>
+
+                <div class="input-box">
+                    <span class="details" for="time">Time:</span>
+                    <input type="time" id="time" name="time">
+                </div>
+
+                <div class="input-box">
+                    <span class="details" for="ph">pH:</span>
+                    <input type="number" id="ph" name="ph" step="0.01">
+                </div>
+
+                <div class="input-box">
+                    <span class="details" for="temperature">Temperature (°C):</span>
+                    <input type="number" id="temperature" name="temperature" step="0.1">
+                </div>
+                <div class="input-box">
+                    <span class="details" for="dissolved-oxygen">Dissolved Oxygen (mg/L):</span>
+                    <input type="number" id="dissolvedoxygen" name="dissolvedoxygen" step="0.01">
+                </div>
+
+                <div class="input-box">
+                    <span class="details" for="nitrate">Nitrate (ppm):</span>
+                    <input type="number" id="nitrate" name="nitrate" step="0.01">
+                </div>
+
+                <div class="input-box">
+                    <span class="details" for="nitrite">Nitrite (ppm):</span>
+                    <input type="number" id="nitrite" name="nitrite" step="0.01">
+                </div>
+
+                <div class="input-box">
+                    <span class="details" for="ammonia">Ammonia (ppm):</span>
+                    <input type="number" id="ammonia" name="ammonia" step="0.01">
+                </div>
+
+                <div class="buttonStyle">
+                    <button type="submit" id="saveBtn">Save</button>
+                    <button type="button" id="backBtn" onclick="history.back()">Back</button>
+                </div>
+            </div>
+        </form>
+
+
+
+    </div>
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var data = {
+                tank: document.getElementById('tank').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                ph: document.getElementById('ph').value,
+                temperature: document.getElementById('temperature').value,
+                dissolvedoxygen: document.getElementById('dissolvedoxygen').value,
+                nitrate: document.getElementById('nitrate').value,
+                nitrite: document.getElementById('nitrite').value,
+                ammonia: document.getElementById('ammonia').value
+            }
+            const form = document.getElementById('fishTankForm');
+            const saveBtn = document.getElementById('saveBtn');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+                const formData = new FormData(form); // Get form data
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
+                // Send data to server
+                fetch('/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                    //.then(response => response.json())
+
+                    .then(response => {
+                        if (response.ok) {
+
+                            // Clear input values
+                            document.getElementById('tank').value = '0';
+                            document.getElementById('date').value = '';
+                            document.getElementById('ph').value = '';
+                            document.getElementById('temperature').value = '';
+                            document.getElementById('dissolvedoxygen').value = '';
+                            document.getElementById('nitrate').value = '';
+                            document.getElementById('nitrite').value = '';
+                            document.getElementById('ammonia').value = '';
+
+                            // Show popup message
+                            alert('Saved successfully');
+
+                        }
+                        else {
+                            throw new Error('Network response was not ok.');
+                        }
+
+                        // Assuming result contains updated dropdown options
+                        // You can update the dropdown options here
+
+                    })
+                    .catch(error => {
+                        console.error('Error saving data:', error);
+                    });
+            });
+        });
+
+
+        window.addEventListener('load', () => {
+            const timeInput = document.getElementById('time');
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            timeInput.value = `${hours}:${minutes}`;
+        });
+
+
+
+        // Create a script element for Bootstrap
+        const bootstrapScript = document.createElement('script');
+        bootstrapScript.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js";
+        bootstrapScript.integrity = "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW";
+        bootstrapScript.crossOrigin = "anonymous";
+
+        // Append the script to the body
+        document.body.appendChild(bootstrapScript);
+
+    </script>
+
+
+
+</body>
+
+</html>

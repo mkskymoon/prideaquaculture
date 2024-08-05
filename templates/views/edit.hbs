@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="js/script.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Edit Tank - Update tank details including pH, temperature, dissolved oxygen, nitrate, nitrite, and ammonia levels.">
+    <meta name="keywords" content="tank, editing, pH, temperature, dissolved oxygen, nitrate, nitrite, ammonia">
+    <meta name="author" content="Manoj Kumar, Pride Aquaculture">
+
+    <title>Edit Tank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Edit Tank</h1>
+        <form action="/edit/{{tank._id}}" method="POST">
+            <label for="tank">Tank:</label>
+            <input type="text" id="tank" name="tank" value="{{tank.tank}}" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" value="{{tank.date}}" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" value="{{tank.time}}" required>
+
+            <label for="ph">pH:</label>
+            <input type="number" id="ph" name="ph" value="{{tank.ph}}" step="0.01">
+
+            <label for="temperature">Temperature:</label>
+            <input type="number" id="temperature" name="temperature" value="{{tank.temperature}}" step="0.1">
+
+            <label for="dissolvedoxygen">Dissolved Oxygen:</label>
+            <input type="number" id="dissolvedoxygen" name="dissolvedoxygen" value="{{tank.dissolvedoxygen}}" step="0.01">
+
+            <label for="nitrate">Nitrate:</label>
+            <input type="number" id="nitrate" name="nitrate" value="{{tank.nitrate}}" step="0.01">
+
+            <label for="nitrite">Nitrite:</label>
+            <input type="number" id="nitrite" name="nitrite" value="{{tank.nitrite}}" step="0.01">
+
+            <label for="ammonia">Ammonia:</label>
+            <input type="number" id="ammonia" name="ammonia" value="{{tank.ammonia}}" step="0.01">
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>

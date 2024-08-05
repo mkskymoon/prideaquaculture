@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>signup - signin</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="regcontainer">
+        <div class="form-box" >
+            <h1 id="title">Sign Up</h1>
+            <form>
+                <div class="input-group">
+                    <div class="input-field" id="nameField">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="password" required>
+                    </div>
+                    <p>forgot password <a href="#"> Click Here</a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="button" id="singupBtn" onclick = "return reg1()">Sign Up</button>
+                    <button type="button" id="singinBtn" class="disable" onclick = "return reg()">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Manoj Kumar, Pride Aquaculture">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Pride Aquaculture</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylefooter.css">
+    <script src="js/script.js"></script>
+</head>
+
+
+<header class="header">
+    <div><a href="/" class="homelogo"><img src="bulb1.png" class="logop"></a></div>
+
+
+    <div class="loader">
+        <h1>Pride Aquaculture</h1>
+    </div>
+
+
+
+    <nav class="navbar">
+        <span class="menuBtn" onclick="openMenu()">&#9776</span>
+        <span class="closeBtn" onclick="closeMenu()">&#9746</span>
+        <ul id="menu">
+            <li><a href="/index" class="active1">Home</div></a></li>
+
+            <li><a href="aboutus">About</a></li>
+            <li><a href="service">Services</a></li>
+            <li><a href="calculation">RAS</a></li>
+            <li><a href="fish">Species </a></li>
+            <li><a href="parameters">Parameters </a></li>
+            <li><a href="contactus">Contact </a></li>
+            <a href="login" class="login-btn" id="login1">Logout</a>
+        </ul>
+    </nav>
+
+</header>
+
+
+<body background="Untitled-4 copy.jpg">
+
+    
+
+    <div id="home" class="pride">
+
+        <div class="namecss">
+            {{#if loggedIn}}
+            <h1>Hello <span class="spanname">{{ this.name }}</span>,</h1>
+            {{else}}
+            <p></p>
+            {{/if}}
+
+
+        </div>
+
+        <div class="top-left-btn">
+            <a href="saveddata" class="daily-data-btn"><i class="fa-solid fa-database"></i> Daily Data Monitoring</a>
+
+        </div>
+
+        <h1 class="anim">Aquaculture with Recirculating Aquaculture Systems (RAS)</h1>
+        <p class="anim">Welcome to the forefront of sustainable aquaculture farming with Recirculating Aquaculture
+            Systems (RAS). As pioneers in this innovative farming method, we are dedicated to transforming the way we
+            produce seafood while minimizing environmental impact and maximizing efficiency.</p>
+
+        <hr class="styled-hr">
+
+        <h1 class="anim">**What is RAS?**</h1>
+
+        <p class="anim"> Recirculating Aquaculture Systems (RAS) represent a cutting-edge approach to fish farming that
+            recycles and
+            filters water within a closed-loop system. Unlike traditional open pond aquaculture, RAS allows for precise
+            control of water quality, temperature, and feeding, creating optimal conditions for fish growth and health.
+            By continuously filtering and reusing water, RAS minimizes water consumption and waste, making it one of the
+            most sustainable methods of aquaculture available today.</p>
+
+        <hr class="styled-hr">
+
+        <h1 class="anim">**Our Commitment to Sustainability**</h1>
+
+        <p class="anim"> At Pride Aquaculture, sustainability is at the core of everything we do. We believe in
+            responsible
+            stewardship of natural resources and strive to minimize our environmental footprint while meeting the
+            growing demand for high-quality seafood. Through the implementation of RAS technology, we aim to:
+
+            - Conserve water resources by recycling and reusing water within closed-loop systems.
+            - Reduce pollution and the risk of disease transmission by maintaining optimal water quality and biosecurity
+            measures.
+            - Minimize habitat destruction and ecosystem disruption associated with traditional open pond aquaculture.
+            - Support local communities by creating jobs and providing access to fresh, locally sourced seafood.
+
+        </p>
+
+        <hr class="styled-hr">
+
+        <h1 class="anim">**Our RAS Farming Practices**</h1>
+
+        <p class="anim"> At our state-of-the-art RAS facility, we prioritize fish welfare, product quality, and
+            environmental
+            sustainability. Here's what sets us apart:
+            <br>
+            1. **Advanced Technology**: Our RAS systems are equipped with cutting-edge technology for precise monitoring
+            and control of water parameters, ensuring optimal conditions for fish growth and health.
+            </br>
+            <br>
+            2. **Species Diversity**: We cultivate a diverse range of fish species suited to RAS farming, including
+            salmon, trout, tilapia, and more, catering to diverse consumer preferences and market demands.
+            </br>
+            3. **Quality Assurance**: From hatchery to harvest, we adhere to strict quality assurance protocols to
+            ensure the highest standards of food safety, product quality, and traceability.
+            <br>
+            4. **Continuous Innovation**: We are committed to ongoing research and development to improve RAS
+            technology, optimize production efficiency, and minimize environmental impact.
+            </br>
+        </p>
+
+        <hr class="styled-hr">
+
+        <h1 class="anim">**Join the RAS Revolution**</h1>
+
+        <p class="anim"> Whether you're a seafood enthusiast, an investor seeking sustainable opportunities, or a
+            partner in the
+            aquaculture industry, we invite you to join us in revolutionizing aquaculture with RAS. Together, we can
+            create a more sustainable future for food production while preserving our planet's precious natural
+            resources.
+        </p>
+
+        <hr class="styled-hr">
+
+        {{> footer}}
+    </div>
+
+</body>
+
+</html>

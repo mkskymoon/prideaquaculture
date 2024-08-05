@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Pride Aquaculture to elevate your aquaculture operations. Fill out the form to get in touch with our team for system upgrades, guidance, and support. We're here to help you succeed in the world of aquaculture.">
+    <script src="script.js"></script>
+    <title>ContuctUs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylefooter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="js/script.js"></script>
+    {{>navbar}}
+</head>
+
+<body background="Untitled-4 copy.jpg">
+    
+    <div class="container-contactus">
+
+        <form action="https://api.web3forms.com/submit" method="POST" class="contustusform">
+            <div>
+                <h3>Get In Touch</h3>
+            </div>
+            <div>
+                <p>Ready to take your aquaculture operation to the next level? Contact us today to learn more about how
+                    Pride Aquaculture can help you succeed. Whether you're a seasoned farmer looking to upgrade your
+                    existing system or a newcomer to aquaculture seeking guidance, we're here to support you every step
+                    of the way.
+
+                    Thank you for choosing pride Aquaculture. We look forward to serving you.</p>
+            </div>
+
+            <input type="hidden" name="access_key" value="6deee7ef-e921-4c63-9b82-9255dde5f8b0">
+            <input type="text" id="name" name="Name" placeholder="Your Name" required>
+            <input type="email" id="email" name="Email" placeholder="Email Id" required>
+            <input type="text" id="phone" name="Phone_number" placeholder="Phone Number" required>
+            <textarea id="message" rows="4" name="Message" placeholder="How can we help you?"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+    <div>
+        {{> footer}}
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+/* fish species*/
+.spices img {
+    width: 5vw;
+    position: fixed;
+    left: 5%;
+    top: 4%;
+}
+
+
+.spices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding-top: 8%;
+    font-size: 2vw;
+
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+
+}
+
+.container {
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.card {
+    width: 20vw;
+    height: 20vh;
+    display: flex;
+    align-self: normal;
+    background-size: cover;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 2rem;
+    margin: 0, 10px;
+    align-items: flex-end;
+    background: no-repeat;
+    background-size: 50vw 86vh;
+    flex-direction: row;
+    transition: .6s cubic-bezier(.28, -0.3, 0, .99);
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.8);
+}
+
+.card>.row {
+    color: white;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 10px;
+}
+
+
+.card>.row>.icon {
+    background-color: #223;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    width: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+
+}
+
+.card>.row>.description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 15vh;
+    width: 35vw;
+    opacity: 0;
+    transform: translate(30px);
+    transition-delay: .3s;
+    transition: all .3s ease;
+
+}
+
+.description p {
+    color: black;
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 1vw;
+    display: flex;
+
+}
+
+.description h4 {
+    text-transform: uppercase;
+    color: black;
+    font-size: 2vw;
+    font-weight: bold;
+    display: flex;
+}
+
+input {
+    display: none;
+}
+
+input:checked+label {
+    width: 50vw;
+    height: 70vh;
+    display: flex;
+}
+
+input:checked+label .description {
+    opacity: 1 !important;
+    transform: translate(0) !important;
+    display: flex;
+}
+
+.card[for="c1"] {
+    background-image: url('./images/Arcticchar1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c2"] {
+    background-image: url('./images/atlanticsalmon1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c3"] {
+    background-image: url('./images/eel1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c4"] {
+    background-image: url('./images/grouper1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c5"] {
+    background-image: url('./images/RainbowTrout.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c6"] {
+    background-image: url('./images/barramundi1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c7"] {
+    background-image: url('./images/africancatfish1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c8"] {
+    background-image: url('./images/atlanticcod1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c9"] {
+    background-image: url('./images/bluefintuna1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c10"] {
+    background-image: url('./images/carps1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c11"] {
+    background-image: url('./images/cobia1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c12"] {
+    background-image: url('./images/lemonsole1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c13"] {
+    background-image: url('./images/pangasius1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c14"] {
+    background-image: url('./images/perch1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c15"] {
+    background-image: url('./images/whitelegshrimp1.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c16"] {
+    background-image: url('./images/sturgeon.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c17"] {
+    background-image: url('./images/turbot.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c18"] {
+    background-image: url('./images/yellowtail.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c19"] {
+    background-image: url('./images/Tilapia.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c20"] {
+    background-image: url('./images/whitefish.jpg');
+    background-size: 5px 0px 1px;
+}
+
+.card[for="c21"] {
+    background-image: url('./images/Pike-perch.jpg');
+    background-size: 5px 0px 1px;
+}
+/* fish species end */

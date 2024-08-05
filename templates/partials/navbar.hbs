@@ -1,0 +1,45 @@
+<script src="js/script.js"></script>
+
+
+<header class="header">
+    <div><a href="/" class="homelogo"><img src="bulb1.png" class="logop"></a></div>
+
+
+    <div class="loader">
+        <h1>Pride Aquaculture</h1>
+    </div>
+
+
+    <nav class="navbar">
+        {{#if loggedIn}}
+        <span class="menuBtn" onclick="openMenu()">&#9776</span>
+        <span class="closeBtn" onclick="closeMenu()">&#9746</span>
+        <ul id="menu">
+            <li><a href="/index" class="active1">Home</div></a></li>
+
+            <li><a href="aboutus">About</a></li>
+            <li><a href="service">Services</a></li>
+            <li><a href="calculation">RAS</a></li>
+            <li><a href="fish">Species </a></li>
+            <li><a href="parameters">Parameters </a></li>
+            <li><a href="contactus">Contact </a></li>
+            <a href="login" class="login-btn" id="login1">Logout</a>
+            {{else}}
+
+            <span class="menuBtn" onclick="openMenu()">&#9776</span>
+            <span class="closeBtn" onclick="closeMenu()">&#9746</span>
+            <ul id="menu">
+                <li><a href="/index" class="active1">Home</div></a></li>
+
+                <li><a href="aboutus">About</a></li>
+                <li><a href="service">Services</a></li>
+                <li><a href="calculation">RAS</a></li>
+                <li><a href="fish">Species </a></li>
+                <li><a href="parameters">Parameters </a></li>
+                <li><a href="contactus">Contact </a></li>
+                <a href="login" class="login-btn" id="login1">Login</a>
+                {{/if}}
+            </ul>
+    </nav>
+
+</header>

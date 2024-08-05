@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use our RAS Calculations tool to easily compute feed requirements, ammonia levels, and tank volumes for your aquaculture systems. Optimize your operations with our interactive calculators for feed, ammonia, and tank dimensions.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylefooter.css">
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <script src="js/script.js"></script>
+
+    <title>RAS-Calculations</title>
+    {{>navbar}}
+
+
+<body background="Untitled-4 copy.jpg">
+
+
+    <div class="cals">
+        <h2>RAS Calculations</h2>
+    </div>
+    
+    <form name="form1">
+        <div class="feed">
+            <div class="feed-card">
+                <img src="img-ras/fish-feed.png" class="card-img" alt="">
+            </div>
+            <div class="calc">
+                <h2>Feed Calculator</h2>
+
+                <div class="feedgroup">
+                    <label for="fish">Fish</label>
+                    <input type="numbers" id="fishestank" name="fishesintank" placeholder="Fishes in Tank" required>
+                </div>
+                <div class="feedgroup">
+                    <label for="avg-weight">Average Fish Weight</label>
+                    <input type="numbers" id="fishweight" name="FishWeight" placeholder="Fish Weight in Grams" required>
+                    <div class="error"></div>
+                </div>
+                <button onclick="return calculatefeed()">Calculate</button>
+                <lable type="numbers" id="feedcal" name="feedingrams"></lable>
+                <lable type="numbers" id="feedcals" name="feedingrams"></lable>
+            </div>
+        </div>
+    </form>
+    <form name="form2">
+        <div class="ammonia">
+            <div class="ammoniacal">
+                <h2>Ammoina Calculator</h2>
+                <div class="ammoniagroup">
+                    <label for="ammonia1">Feed</label>
+                    <input type="numbers" id="feed" name="feedperday" placeholder="Feed in grams" required>
+                    <div class="error"></div>
+                </div>
+                <div class="feedgroup">
+                    <label for="avg-weight">Average Fish weight</label>
+                    <input type="numbers" id="feedweight" name="FeedWeight" placeholder="Fish Weight in Grams" required>
+                    <div class="error"></div>
+                </div>
+                <button onclick="return calculateammonia()">Calculate</button>
+                <lable type="numbers" id="ammoniacal" name="feedingrams"></lable>
+                <lable type="numbers" id="ammoniacals" name="feedingrams"></lable>
+            </div>
+            <div class="ammonia-card">
+                <img src="img-ras/ammonia-in-water.png" class="ammonia-img" alt="">
+            </div>
+        </div>
+    </form>
+    <form name="form3">
+        <div class="round">
+            <div class="round-card">
+                <img src="img-ras/roundtank.png" class="round-img" alt="">
+            </div>
+            <div class="roundcalc">
+                <h2>Circular Water Tank Calculation</h2>
+                <div class="roundgroup">
+                    <label for="number">Diameter</label>
+                    <input type="numbers" id="roundtank" name="roundtank" placeholder="Diameter in feets" required>
+                    <div class="error"></div>
+                </div>
+                <div class="roundgroup">
+                    <label for="weight">Height</label>
+                    <input type="numbers" id="roundheight" name="roundheight" placeholder="Height in feets" required>
+                    <div class="error"></div>
+                </div>
+                <button onclick="return roundtankwater()">Calculate</button>
+                <lable type="numbers" id="roundcalses" name="rounddia"></lable>
+                <lable type="numbers" id="roundcalse" name="roundheight"></lable>
+            </div>
+        </div>
+    </form>
+    <form name="form4">
+        <div class="square">
+            <div class="squaretank">
+                <h2>Rectanguler Water Tank Calculation</h2>
+                <div class="squaregroup">
+                    <label for="square1">height</label>
+                    <input type="numbers" id="squareheight" name="squareheigth2" placeholder="Height in feets" required>
+                    <div class="error"></div>
+                </div>
+                <div class="squaregroup">
+                    <label for="square2">Length</label>
+                    <input type="numbers" id="squarelength" name="squareheight1" placeholder="Length in feets" required>
+                    <div class="error"></div>
+                </div>
+                <div class="squaregroup">
+                    <label for="square3">Width</label>
+                    <input type="numbers" id="squarewidth" name="squareWeight" placeholder="width in feets" required>
+                    <div class="error"></div>
+                </div>
+                <button onclick="return squaretankwater()">Calculate</button>
+                <lable type="numbers" id="squareinliters" name="feedingrams"></lable>
+                <lable type="numbers" id="squareingals" name="feedingrams"></lable>
+            </div>
+            <div class="square-card">
+                <img src="img-ras/square tank.png" class="square-img" alt="">
+            </div>
+        </div>
+    </form>
+    <div>
+        {{> footer}}
+    </div>
+</body>
+
+</html>

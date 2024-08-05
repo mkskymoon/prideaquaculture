@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Manoj Kumar, Pride Aquaculture">
+    <meta name="description" content="Sign in to access your Pride Aquaculture account. If you don't have an account, you can sign up or recover your forgotten password.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>signin</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    
+    <div class="regcontainer">
+        <div class="form-box">
+            <h1 id="title">Sign In</h1>
+
+            {{#if error}}
+            <div class="error-message">{{ error }}</div>
+            {{/if}}
+
+            <form id="loginForm" method="POST" action="/home">
+                <div class="input-group">
+
+                    <div class="input-field" id="nameField">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" name="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="password" id="password" placeholder="password" required>
+                    </div>
+                    <p>Don't have an account? <a href="/register"> Sign Up</a></p>
+                    <p><a href="/forgot-password">Forgotten Password?</a></p>
+                </div>
+
+                <div class="btn-field1">
+
+                    <button type="submit" name="submit" class="singinBtn">Sign In</button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+
+</body>
+
+</html>

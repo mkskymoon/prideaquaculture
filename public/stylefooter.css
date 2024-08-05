@@ -1,0 +1,98 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2vw;
+}
+
+.contact-details p {
+    padding: 0px 5px;
+    color: #fff;
+}
+
+.contact-details h3 {
+    color: #fff;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-links h3 {
+    color: #fff;
+}
+
+
+.text-center {
+    color: white;
+    display: flex;
+    text-align: center;
+    font-size: 1.5vw;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.contact-details a {
+    color: white;
+    text-decoration: none;
+}
+
+.contact-details a:hover {
+    color: aqua;
+}
+
+.contact-details,
+.social-links,
+.text-center {
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    margin: 0 5px;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.fitter {
+    margin-top: 70px;
+    /* Adjust this value to increase or decrease the space */
+    bottom: 0;
+    width: 100%;
+}
+
+
+.social-links i {
+    font-size: 1.5em;
+}
+
+/* Styling for social media icons (example) */
+.fa-youtube {
+    color: red;
+
+}
+
+.fa-youtube:hover {
+    color: aqua;
+
+}
+
+.fa-facebook-f {
+    color: blue;
+}
+
+.fa-facebook-f:hover {
+    color: aqua;
+}
