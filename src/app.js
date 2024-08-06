@@ -91,7 +91,13 @@ const isAuthenticated = (req, res, next) => {
 
 
 //routing
-
+app.get('/', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/index');
+    } else {
+        res.redirect('/index');
+    }
+});
 
 app.get('/index', async (req, res) => {
     try {
