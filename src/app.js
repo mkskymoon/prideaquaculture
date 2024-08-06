@@ -31,7 +31,7 @@ const mongoose = require('mongoose');
 
 
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 
 
@@ -149,7 +149,7 @@ app.get('/auth/google/callback', passport.authenticate('google', {
     req.session.loggedIn = true
     // Successful authentication, create session
     req.session.user = req.user;
-    res.redirect('http://localhost:8000/index');
+    res.redirect('http://localhost:3000/index');
 });
 
 app.get('/api/user', (req, res) => {
