@@ -1,9 +1,11 @@
 const path = require('path');
 const webpack = require('webpack'); // Ensure this line is present
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: './src/app.js', // Adjust the entry point as needed
+  target: 'node',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')},
