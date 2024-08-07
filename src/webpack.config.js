@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+const webpack = require('webpack'); // Ensure this line is present
 
 module.exports = {
   entry: './src/app.js', // Adjust the entry point as needed
