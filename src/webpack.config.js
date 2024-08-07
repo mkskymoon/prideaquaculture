@@ -1,11 +1,12 @@
 const path = require('path');
 const webpack = require('webpack'); // Ensure this line is present
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   entry: './src/app.js', // Adjust the entry point as needed
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')},
     resolve: {
     fallback: {
       "assert": require.resolve("assert/"),
@@ -18,7 +19,7 @@ module.exports = {
       "node:fs": require.resolve("fs/")
     }
   },
-  },
+  
   mode: 'development',
   resolve: {
     fallback: {
