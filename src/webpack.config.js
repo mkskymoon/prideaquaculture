@@ -9,6 +9,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')},
+  externals: [nodeExternals()],
     resolve: {
     fallback: {
       "assert": require.resolve("assert/"),
