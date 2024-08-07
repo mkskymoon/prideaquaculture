@@ -3,7 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: './src/app.js',
-  target: 'node', // important to handle node-specific modules
+  target: 'node', // important for handling node-specific modules
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -13,7 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: 'node-loader',
+        loader: 'node-loader',
         include: /node_modules/,
       },
     ],
