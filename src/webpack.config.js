@@ -6,6 +6,18 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    resolve: {
+    fallback: {
+      "assert": require.resolve("assert/"),
+      "path": require.resolve("path-browserify"),
+      "crypto": require.resolve("crypto-browserify"),
+      "console": require.resolve("console-browserify"),
+      "fs": false, // If you don't need fs in the browser
+      "node:events": require.resolve("events/"),
+      "node:fs/promises": require.resolve("fs/promises"),
+      "node:fs": require.resolve("fs/")
+    }
+  },
   },
   mode: 'development',
   resolve: {
