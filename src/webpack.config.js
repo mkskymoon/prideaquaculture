@@ -1,10 +1,10 @@
 const path = require('path');
-const webpack = require('webpack'); // Ensure this line is present
+const webpack = require('webpack');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: './src/index.js', // Adjust the entry point as needed
+  entry: './src/app.js', // Adjust the entry point as needed
   target: 'node',
   output: {
     filename: 'bundle.js',
@@ -12,6 +12,18 @@ module.exports = {
   },
   externals: [nodeExternals()],
   resolve: {
+    alias: {
+      'node:util': 'util',
+      'node:path': 'path-browserify',
+      'node:crypto': 'crypto-browserify',
+      'node:console': 'console-browserify',
+      'node:fs/promises': 'fs/promises',
+      'node:fs': 'fs',
+      'node:stream': 'stream-browserify',
+      'node:string_decoder': 'string_decoder',
+      'node:url': 'url',
+      'node:events': 'events',
+    },
     fallback: {
       "assert": require.resolve("assert/"),
       "path": require.resolve("path-browserify"),
@@ -19,4 +31,17 @@ module.exports = {
       "console": require.resolve("console-browserify"),
       "fs": false, // If you don't need fs in the browser
       "events": require.resolve("events/"),
-      "stream": require.resolve("stream-brow
+      "stream": require.resolve("stream-browserify"),
+      "util": require.resolve("util/"),
+      "url": require.resolve("url/"),
+      "string_decoder": require.resolve("string_decoder/"),
+    }
+  },
+  mode: 'development',
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
+    new NodePolyfillPlugin()
+  ],
+};
