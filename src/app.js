@@ -435,6 +435,14 @@ app.post('/save', (req, res) => {
 
 
 });
+app.get('/save', async (req, res) => {
+    try {
+        const tanks = await FishTank.find({ user: req.user._id });
+        res.status(200).json(tanks);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to retrieve tanks data' });
+    }
+});
 
 
 app.listen(port, '0.0.0.0', () => {
