@@ -6,6 +6,11 @@ const fishTankSchema = new mongoose.Schema({
         type: String,
         default: uuidv4
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
 
     tank: {
         type: String,
