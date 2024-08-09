@@ -89,6 +89,13 @@ const isAuthenticated = (req, res, next) => {
     }
 };
 
+app.use((req, res, next) => {
+  if (req.url === '/') {
+    res.redirect('/index');
+  } else {
+    next();
+  }
+});
 
 //routing
 app.get('/', (req, res) => {
