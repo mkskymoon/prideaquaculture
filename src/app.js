@@ -99,6 +99,7 @@ app.get('/', (req, res) => {
     }
 });
 
+
 app.get('/index', async (req, res) => {
     try {
         if (req.session.loggedIn) {
