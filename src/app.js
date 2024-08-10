@@ -8,19 +8,19 @@ const cookieparser = require('cookie-parser');
 const path = require('path');
 const hbs = require('hbs');
 const bcrypt = require('bcrypt');
-require("./db/conn");
-const Collection = require("./models/signup");
-const FishTank = require("./models/tank")
-const auth = require("./middleware/auth");
+require('./src/db/conn');
+const Collection = require('./src/models/signup');
+const FishTank = require('./src/models/tank');
+const auth = require('./src/middleware/auth');
+const forgotten = require('./src/models/forgotpassword');
+const forgotPasswordRouter = require('./src/route/routes');
+const passport = require('./src/passport-setup');
 const moment = require('moment');
 const uuid = require("uuid");
 const methodOverride = require('method-override');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-const forgotten = require('./models/forgotpassword');
-const forgotPasswordRouter = require('./route/routes');
 const { error } = require('console');
-const passport = require('./passport-setup');
 const flash = require('connect-flash');
 const session = require('express-session');
 const mongoose = require('mongoose');
@@ -157,7 +157,8 @@ app.get('/auth/google/callback', passport.authenticate('google', {
     req.session.loggedIn = true
     // Successful authentication, create session
     req.session.user = req.user;
-    res.redirect('http://localhost:3000/index');
+    res.redirect('http://prideaquaculture.com/index');
+
 });
 
 app.get('/api/user', (req, res) => {
@@ -176,14 +177,16 @@ app.get('/register', (req, res) => {
     res.render('register', { error: req.flash('error') });
 });
 
-
-
-
-
 app.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/login');
+    req.session.destroy(err => {
+        if (err) {
+            console.error('Error destroying session:', err);
+        }
+        res.redirect('/login');
+    });
 });
+
 
 app.get("/login", (req, res) => {
     res.render('login')
@@ -454,5 +457,6 @@ app.get('/save', async (req, res) => {
 
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`port at ${port}`)
+    console.log(`Server is running on port ${port}`);
 });
+
