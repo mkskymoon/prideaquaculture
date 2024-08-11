@@ -98,30 +98,28 @@ app.use((req, res, next) => {
 });
 
 //routing
+//routing
 app.get('/', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/index');
-    } else {
-        res.redirect('/index');
-    }
+    res.redirect('/index');
 });
-
 
 app.get('/index', async (req, res) => {
     try {
-        if (req.session.loggedIn) {
-            // If user is logged in, fetch user data from the database
+        const loggedIn = req.session.loggedIn || false;
+        if (loggedIn) {
+            // Fetch user data if logged in
             const user = await Collection.findOne();
-            res.render('home', { name: user.name, loggedIn: true });
+            res.render('home', { name: user.name, loggedIn });
         } else {
-            // If user is not logged in, render the index page
-            res.render('index', { loggedIn: false });
+            // Render the index page if not logged in
+            res.render('index', { loggedIn });
         }
     } catch (error) {
         console.error("Error:", error);
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 
 app.get("/dailydata", (req, res) => {
