@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Manoj Kumar, Pride Aquaculture">
-    <meta name="description" content="View and manage user data, including tank details and environmental metrics. Features include search functionality and PDF export for selected date ranges.">
-    <meta name="keywords" content="user data, data table, tank monitoring, environmental metrics, PDF export, search functionality">
+    <meta name="description"
+        content="View and manage user data, including tank details and environmental metrics. Features include search functionality and PDF export for selected date ranges.">
+    <meta name="keywords"
+        content="user data, data table, tank monitoring, environmental metrics, PDF export, search functionality">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style1.css">
@@ -101,6 +103,10 @@
                                 </div>
                             </td>
                         </tr>
+                        {{else}}
+                        <tr>
+                            <td colspan="10">No data available</td>
+                        </tr>
                         {{/each}}
                         {{/if}}
                     </tbody>
@@ -168,7 +174,7 @@
             const startDate = normalizeDate(new Date(startDateInput));
             const endDate = normalizeDate(new Date(endDateInput));
 
-        
+
 
             if (isNaN(startDate) || isNaN(endDate)) {
                 alert('Please select valid start and end dates.');
@@ -193,7 +199,7 @@
                 }
             }
 
-            
+
             generatePDF(filteredRows);
         });
 
@@ -206,7 +212,7 @@
                 return cells.map(cell => cell.textContent);
             });
 
-            
+
 
             if (tableData.length === 0) {
                 alert('No data available for the selected date range.');
