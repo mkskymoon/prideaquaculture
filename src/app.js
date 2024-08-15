@@ -1,4 +1,3 @@
-//import React from 'react';
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -41,7 +40,7 @@ const port = process.env.PORT || 3000;
 app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7,
     }
@@ -80,8 +79,9 @@ hbs.registerPartials(partials_path);
 
 
 const isAuthenticated = (req, res, next) => {
-    if (req.session.loggedIn) {
+    if (req.session && req.session.user) {
         // If user is authenticated, proceed to the next middleware or route handler
+        req.user = req.session.user;
         next();
     } else {
         // If user is not authenticated, redirect to login page or send an error response
@@ -126,23 +126,27 @@ app.get("/dailydata", (req, res) => {
     res.render('dailydata', { loggedIn: true });
 });
 
+
 app.get("/saveddata", async (req, res) => {
     try {
+        if (!req.session.user || !req.session.user._id) {
+            return res.status(401).send('Unauthorized: User not logged in');
+        }
 
-        const data = await FishTank.find().sort({ date: -1 }); // Fetch all data from MongoDB
-        //data.forEach(item => {
-        // Assuming 'date' field is a Date object
-        // item.formattedDate = formatDate(item.date);
-        //});
+        const userId = req.session.user._id;
+        const data = await FishTank.find({ user: userId }).sort({ date: -1 });
+
         data.forEach(item => {
             item.formattedDate = item.date.toLocaleDateString('en-GB');
         });
-        res.render('saveddata', { data, loggedIn: true }); // Render savedata.hbs with fetched data
+
+        res.render('saveddata', { data, loggedIn: true });
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
     }
 });
+
 
 
 
@@ -191,16 +195,19 @@ app.get("/login", (req, res) => {
 });
 
 // Route to render the edit form with data
-app.get('/edit/:id', async (req, res) => {
+app.get('/edit/:id', isAuthenticated, async (req, res) => {
     try {
-        const tankId = req.params.id; // Get the tank ID from the URL params
-        const tank = await FishTank.findById(tankId); // Fetch the tank data from the database
+        const tankId = req.params.id;
+        const userId = req.session.user._id;
+
+        // Fetch the tank data and ensure it belongs to the logged-in user
+        const tank = await FishTank.findOne({ _id: tankId, user: userId });
 
         if (!tank) {
-            return res.status(404).send('Tank not found');
+            return res.status(404).send('Tank not found or you do not have permission to edit this tank.');
         }
 
-        res.render('edit', { tank }); // Render the edit form with the tank data
+        res.render('edit', { tank });
     } catch (error) {
         console.error('Error fetching tank data:', error);
         res.status(500).send('Internal Server Error');
@@ -247,21 +254,24 @@ app.get("*", (req, res) => {
 });
 
 // Route to handle deleting a tank
-app.delete('/delete/:id', async (req, res) => {
+app.delete('/delete/:id', isAuthenticated, async (req, res) => {
     try {
         const tankId = req.params.id;
-        await FishTank.findByIdAndDelete(tankId);
+        const userId = req.session.user.id;
+
+        // Find and delete the tank only if it belongs to the logged-in user
+        const tank = await FishTank.findOneAndDelete({ _id: tankId, user: userId });
+
+        if (!tank) {
+            return res.status(404).send('Tank not found or you do not have permission to delete this tank.');
+        }
+
         res.status(200).send('Tank deleted successfully');
     } catch (error) {
         console.error('Error deleting tank:', error);
         res.status(500).send('Internal Server Error');
     }
 });
-
-
-
-
-
 //search data by date
 // Route to handle search
 app.post('/search', async (req, res) => {
@@ -360,6 +370,7 @@ app.post('/home', async (req, res) => {
 
         // If email and password are correct, set the loggedIn session variable to true
         req.session.loggedIn = true;
+        req.session.user = user; 
 
         // Redirect the user to the home page
         res.redirect('/index');
@@ -405,8 +416,13 @@ app.post('/edit/:id', async (req, res) => {
 // Daily Data Monitoring..
 
 // Save data
-app.post('/save', (req, res) => {
+app.post('/save',isAuthenticated, (req, res) => {
+    if (!req.user) {
+        console.error('User is not authenticated');
+        return res.status(401).send('User not authenticated');
+    }
 
+    const userId = req.user._id;
     const { tank } = req.body;
     const date = req.body.date;
     const time = req.body.time;
@@ -420,6 +436,7 @@ app.post('/save', (req, res) => {
 
 
     const newEntry = new FishTank({
+        user: userId,
         id: uuid.v4(),
         tank,
         date: date,
@@ -435,9 +452,10 @@ app.post('/save', (req, res) => {
         .then(result => {
             res.json((200), ({ message: 'Saved Successfully' }, newEntry));
 
+
         })
         .catch(err => {
-            res.json((500), ({ error: 'Error saving data' }));
+            res.json((500), ({ error: 'Error saving data' + err }));
 
         });
 
