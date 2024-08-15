@@ -3,6 +3,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const Collection = require('./models/signup');
 require('dotenv').config();
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
